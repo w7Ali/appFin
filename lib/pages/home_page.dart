@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color.fromARGB(255, 38, 83, 120),
         actions: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(14.0),
             child: ConstrainedBox(
               constraints: const BoxConstraints(
                 minWidth: 100.0,
@@ -109,6 +109,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            const SizedBox(height: 16.0),
             ListTile(
               title: const Text('Home'),
               leading: SvgPicture.asset(

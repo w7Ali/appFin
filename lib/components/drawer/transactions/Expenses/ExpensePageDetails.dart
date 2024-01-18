@@ -32,7 +32,20 @@ class _ExpensePageDetailsState extends State<ExpensePageDetails> {
         title: const Text('Expenses',
         style: TextStyle(color: Color.fromARGB(255, 246, 245, 245)),
         ),
-        backgroundColor: const Color.fromARGB(255, 38, 83, 120),
+        backgroundColor: const Color.fromARGB(255, 54, 112, 159),
+        toolbarHeight: 55,
+        shape: const ContinuousRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(60.0),
+            bottomRight: Radius.circular(60.0),
+          ),
+        ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 26.0),
+            child: SizedBox(),
+          ),
+        ],
       ),
       body: const Center(
         child: Column(

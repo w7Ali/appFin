@@ -36,7 +36,7 @@ class _TransactionState extends State<Transaction> {
           style: TextStyle(color: Color.fromARGB(255, 246, 245, 245)),
         ),
         backgroundColor: const Color.fromARGB(255, 54, 112, 159),
-        toolbarHeight: 50,
+        toolbarHeight: 55,
         shape: const ContinuousRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(60.0),
