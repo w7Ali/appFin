@@ -51,6 +51,7 @@ class _TransactionState extends State<Transaction> {
         ],
       ),
       body: SingleChildScrollView(
+        
         scrollDirection: Axis.horizontal,
         child: Container(
           padding: const EdgeInsets.all(16.0),
@@ -68,7 +69,7 @@ class _TransactionState extends State<Transaction> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20.0),
                       child: Container(
-                        padding: const EdgeInsets.all(66.0),
+                        padding: const EdgeInsets.all(58.0),
                         color: Colors.blue,
                         child: const Text(
                           'Incomes',
@@ -92,7 +93,7 @@ class _TransactionState extends State<Transaction> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20.0),
                       child: Container(
-                        padding: const EdgeInsets.all(66.0),
+                        padding: const EdgeInsets.all(59.0),
                         color: const Color.fromARGB(255, 16, 47, 16),
                         child: const Text(
                           'Expenses',
@@ -103,74 +104,13 @@ class _TransactionState extends State<Transaction> {
                   ],
                 ),
               ),
-              const SizedBox(width: 16.0),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => YourOtherPage(),
-                  ));
-                },
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0),
-                      child: Container(
-                        padding: const EdgeInsets.all(66.0),
-                        color: Colors.amber,
-                        child: const Text(
-                          'Other Stack',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 16.0),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => YourOtherPage(),
-                  ));
-                },
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0),
-                      child: Container(
-                        padding: const EdgeInsets.all(66.0),
-                        color: Colors.pink,
-                        child: const Text(
-                          'Other Stack',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              const SizedBox(height: 16.0)
+              // child:
             ],
           ),
         ),
       ),
     );
-  }
-}
-
-class YourOtherPage extends StatelessWidget {
-  const YourOtherPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Your Other Page'),
-      ),
-      body: const Center(
-        child: Text('This is your other page'),
-      ),
-    );
+    
   }
 }

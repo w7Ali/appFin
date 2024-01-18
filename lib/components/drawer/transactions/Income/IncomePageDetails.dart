@@ -29,7 +29,9 @@ class _IncomingPageDetailsState extends State<IncomingPageDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Incoming Page'),
+        title: const Text('Incoming Page',
+        style: TextStyle(color: Color.fromARGB(255, 246, 245, 245)),
+        ),
         backgroundColor: const Color.fromARGB(255, 38, 83, 120),
       ),
       body: const Center(
