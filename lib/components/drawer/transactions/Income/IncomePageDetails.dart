@@ -29,8 +29,9 @@ class _IncomingPageDetailsState extends State<IncomingPageDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Incoming Page',
-        style: TextStyle(color: Color.fromARGB(255, 246, 245, 245)),
+        title: const Text('Income',
+        style: TextStyle(color: Color.fromARGB(255, 246, 245, 245),
+        fontFamily: 'serif'),
         ),
         backgroundColor: const Color.fromARGB(255, 54, 112, 159),
         toolbarHeight: 55,
@@ -49,6 +50,7 @@ class _IncomingPageDetailsState extends State<IncomingPageDetails> {
 
       ),
       body: const Center(
+        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

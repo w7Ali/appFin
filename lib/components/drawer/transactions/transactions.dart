@@ -28,12 +28,13 @@ class _TransactionState extends State<Transaction> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white54,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text(
           'Transaction',
-          style: TextStyle(color: Color.fromARGB(255, 246, 245, 245)),
+          style: TextStyle(color: Color.fromARGB(255, 246, 245, 245),
+          fontFamily: 'serif'),
         ),
         backgroundColor: const Color.fromARGB(255, 54, 112, 159),
         toolbarHeight: 55,
@@ -69,7 +70,10 @@ class _TransactionState extends State<Transaction> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20.0),
                       child: Container(
-                        padding: const EdgeInsets.all(58.0),
+                        padding: const EdgeInsets.symmetric(
+                        horizontal: 120.0,
+                        vertical: 70.0,
+                        ),
                         color: Colors.blue,
                         child: const Text(
                           'Incomes',
@@ -93,7 +97,7 @@ class _TransactionState extends State<Transaction> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20.0),
                       child: Container(
-                        padding: const EdgeInsets.all(59.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 120.0, vertical: 70.0),
                         color: const Color.fromARGB(255, 16, 47, 16),
                         child: const Text(
                           'Expenses',
@@ -104,7 +108,6 @@ class _TransactionState extends State<Transaction> {
                   ],
                 ),
               ),
-              const SizedBox(height: 16.0)
               // child:
             ],
           ),

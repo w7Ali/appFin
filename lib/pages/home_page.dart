@@ -1,3 +1,4 @@
+import 'package:financeapp/components/drawer/settings/setting.dart';
 import 'package:financeapp/components/drawer/transactions/transactions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,6 +45,7 @@ class _HomePageState extends State<HomePage> {
                     controller: controller,
                     padding: const MaterialStatePropertyAll<EdgeInsets>(
                       EdgeInsets.symmetric(horizontal: 8.0),
+                
                     ),
                     onTap: () {
                       controller.openView();
@@ -52,6 +54,7 @@ class _HomePageState extends State<HomePage> {
                       controller.openView();
                     },
                     leading: const Icon(Icons.search),
+                    hintText: 'Search',
                   );
                 },
                 suggestionsBuilder: (BuildContext context, SearchController controller) {
@@ -176,7 +179,10 @@ class _HomePageState extends State<HomePage> {
                 height: 24,
               ),
               onTap: () {
-                // Handle drawer item 2 click
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SettingsPageDetails()),
+                );
               },
             ),
           ],
@@ -185,7 +191,8 @@ class _HomePageState extends State<HomePage> {
       ),
 
       body: const Center(
-        child: Text('Welcome bhai'),
+        
+
       ),
     );
   }
