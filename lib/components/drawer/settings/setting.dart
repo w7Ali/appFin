@@ -1,7 +1,4 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,7 +39,10 @@ class _SettingsPageDetailsState extends State<SettingsPageDetails> {
       appBar: AppBar(
         title: const Text(
           'Settings',
-          style: TextStyle(color: Color.fromARGB(255, 246, 245, 245), fontFamily: 'sans-serif'),
+          style: TextStyle(
+            color: Color.fromARGB(255, 246, 245, 245),
+            fontFamily: 'sans-serif',
+          ),
         ),
         backgroundColor: const Color.fromARGB(255, 54, 112, 159),
         toolbarHeight: 55,
@@ -59,182 +59,195 @@ class _SettingsPageDetailsState extends State<SettingsPageDetails> {
           ),
         ],
       ),
-      body: Padding(
-        
-        padding: const EdgeInsets.all(16.0),
+
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(height: 16.0,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                padding:EdgeInsets.only(right: 16.0),
-                child: SvgPicture.asset("assets/budget.svg",
-                width: 26,
-                height: 26,),
-                ),
-                Text('Monthly Budget', style: TextStyle(color: Colors.black, 
-                fontFamily: 'sans-serif', 
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0),
-                ),
-                Switch(
-                  value: isBudgetEnabled,
-                  onChanged: (value) {
-                    setState(() {
-                      isBudgetEnabled = value;
-                      // Implement fingerprint toggle logic here
-                    });
-                  },
-                ),
-              ],
+          children: [
+            buildSwitchListTile(
+              'Monthly Budgets',
+              isBudgetEnabled,
+                  (value) {
+                setState(() {
+                  isBudgetEnabled = value;
+                });
+              },
+              icon: Icons.monetization_on,
             ),
-            const SizedBox(height: 16.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                  Icon(Icons.dark_mode_rounded,),
-                Text('Dark Mode:', style: TextStyle(color: Colors.black, 
-                fontFamily: 'sans-serif', 
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0),),
-                Switch(
-                  value: isDarkMode,
-                  onChanged: (value) {
-                    setState(() {
-                      isDarkMode = value;
-                      // Implement dark mode toggle logic here
-                    });
-                  },
-                ),
-                
-              ],
-            ),
-            SizedBox(height: 16.0,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Icon(Icons.fingerprint),
-                Text('Fingerprint:', style: TextStyle(color: Colors.black,
-                 fontFamily: 'sans-serif', 
-                 fontWeight: FontWeight.bold,
-                 fontSize: 18.0),
-                 ),
-                Switch(
-                  value: isFingerprintEnabled,
-                  onChanged: (value) {
-                    setState(() {
-                      isFingerprintEnabled = value;
-                      // Implement fingerprint toggle logic here
-                    });
-                  },
-                ),
-              ],
-            ),
-           
-            SizedBox(height: 16.0,),
+            // SizedBox(height: 16.0),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                SvgPicture.asset("assets/expense.svg",
-                width: 26,
-                height: 26,
-                ),                // Icon(Icons.svg),
-                Text('Expense Reminder', style: TextStyle(color: Colors.black,
-                fontFamily: 'sans-serif', 
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0),
-                ),
-                Switch(
-                  value: isReminderEnabled,
-                  onChanged: (value) {
-                    setState(() {
-                      isReminderEnabled = value;
-                      // Implement fingerprint toggle logic here
-                    });
-                  },
-                ),
-              ],
+            buildSwitchListTile(
+              'Private Mode',
+              isPrivateEnabled,
+                  (value) {
+                setState(() {
+                  isPrivateEnabled = value;
+                });
+              },
+              icon: Icons.security,
             ),
-            SizedBox(height: 16.0,),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                SvgPicture.asset("assets/private.svg",
-                width: 26,
-                height: 26,
-                ),
-                Text('Private Mode', style: TextStyle(color: Colors.black, 
-                fontFamily: 'sans-serif', 
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0),
-                ),
-                Switch(
-                  value: isPrivateEnabled,
-                  onChanged: (value) {
-                    setState(() {
-                      isPrivateEnabled = value;
-                      // Implement fingerprint toggle logic here
-                    });
-                  },
-                ),
-              ],
+            buildSwitchListTile(
+              'Dark Mode',
+              isDarkMode,
+                  (value) {
+                setState(() {
+                  isDarkMode = value;
+                });
+              },
+              icon: isDarkMode ? Icons.dark_mode : Icons.light_mode,
             ),
-            SizedBox(height: 16.0,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                SvgPicture.asset('assets/non-expense.svg',
-                width: 26,
-                height: 26,
-                ),
-                Text('LiteTrack(non-exp..)', style: TextStyle(color: Colors.black,
-                fontFamily: 'sans-serif', 
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0),
-                ),
-                Switch(
-                  value: isLiteTrackEnabled,
-                  onChanged: (value) {
-                    setState(() {
-                      isLiteTrackEnabled = value;
-                      // Implement fingerprint toggle logic here
-                    });
-                  },
-                ),
-              ],
+
+            buildSwitchListTile(
+              'App Lock',
+              isFingerprintEnabled,
+                  (value) {
+                setState(() {
+                  isFingerprintEnabled = value;
+                });
+              },
+              icon: Icons.fingerprint,
             ),
-            SizedBox(height: 16.0,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Icon(Icons.notification_important),
-                Text('Instant Notifications:', style: TextStyle(color: Colors.black, 
-                fontFamily: 'sans-serif', 
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0),
+
+            const ListTile(
+              title: Text(
+                'Widgets',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'sans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
                 ),
-                Switch(
-                  value: isNotificationEnabled,
-                  onChanged: (value) {
-                    setState(() {
-                      isNotificationEnabled = value;
-                      // Implement fingerprint toggle logic here
-                    });
-                  },
-                ),
-              ],
+              ),
+              subtitle: Text(
+                  "Stay up-to-date on expenses and due bills from your phone home screen"),
             ),
-            // Add your existing ListView or any other widgets here
+            const ListTile(
+              title: Text(
+                'Widgets',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'sans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+              subtitle: Text(
+                  "Stay up-to-date on expenses and due bills from your phone home screen"),
+            ),
+
+            buildSwitchListTile(
+              'Instant Notifications',
+              isNotificationEnabled,
+                  (value) {
+                setState(() {
+                  isNotificationEnabled= value;
+                  ;
+                });
+              },
+              icon: Icons.notification_important_rounded,
+            ),
+
+            const ListTile(
+              title: Text(
+                'Widgets',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'sans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+              subtitle: Text(
+                  "Stay up-to-date on expenses and due bills from your phone home screen"),
+            ),
+
+            const ListTile(
+              title: Text(
+                'Widgets',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'sans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+              subtitle: Text(
+                  "Stay up-to-date on expenses and due bills from your phone home screen"),
+            ),
+
+            const ListTile(
+              title: Text(
+                'Widgets',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'sans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+              subtitle: Text(
+                  "Stay up-to-date on expenses and due bills from your phone home screen"),
+            ),
+
+            const ListTile(
+              title: Text(
+                'Widgets',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'sans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+              subtitle: Text(
+                  "Stay up-to-date on expenses and due bills from your phone home screen"),
+            ),
+
+            const ListTile(
+              title: Text(
+                'Widgets',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'sans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+              subtitle: Text(
+                  "Stay up-to-date on expenses and due bills from your phone home screen"),
+            ),
+
+
           ],
         ),
       ),
+    );
+  }
+
+  SwitchListTile buildSwitchListTile(
+      String title,
+      bool value,
+      ValueChanged<bool> onChanged, {
+        IconData? icon,
+      }) {
+    return SwitchListTile(
+      title: Row(
+        children: [
+          if (icon != null) Icon(icon, color: Colors.black),
+          SizedBox(width: icon != null ? 8.0 : 0),
+          Text(
+            title,
+            style: const TextStyle(
+              color: Colors.black,
+              fontFamily: 'sans',
+              fontWeight: FontWeight.bold,
+              fontSize: 18.0,
+            ),
+          ),
+        ],
+      ),
+      value: value,
+      onChanged: onChanged,
     );
   }
 }

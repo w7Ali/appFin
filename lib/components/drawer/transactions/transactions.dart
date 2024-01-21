@@ -34,7 +34,7 @@ class _TransactionState extends State<Transaction> {
         title: const Text(
           'Transaction',
           style: TextStyle(color: Color.fromARGB(255, 246, 245, 245),
-          fontFamily: 'serif'),
+          fontFamily: 'sans'),
         ),
         backgroundColor: const Color.fromARGB(255, 54, 112, 159),
         toolbarHeight: 55,
@@ -74,7 +74,7 @@ class _TransactionState extends State<Transaction> {
                         horizontal: 120.0,
                         vertical: 70.0,
                         ),
-                        color: Colors.blue,
+                        color: const Color.fromARGB(255, 86, 112, 133),
                         child: const Text(
                           'Incomes',
                           style: TextStyle(color: Colors.white),

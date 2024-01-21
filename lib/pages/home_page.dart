@@ -33,12 +33,13 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color.fromARGB(255, 38, 83, 120),
         actions: [
           Padding(
-            padding: const EdgeInsets.all(14.0),
+            padding: const EdgeInsets.only(top: 18.0, bottom: 14.0),
             child: ConstrainedBox(
               constraints: const BoxConstraints(
                 minWidth: 100.0,
                 maxWidth: 300.0, 
               ),
+              
               child: SearchAnchor(
                 builder: (BuildContext context, SearchController controller) {
                   return SearchBar(
@@ -53,6 +54,7 @@ class _HomePageState extends State<HomePage> {
                     onChanged: (_) {
                       controller.openView();
                     },
+                    
                     leading: const Icon(Icons.search),
                     hintText: 'Search',
                   );
@@ -86,30 +88,30 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            UserAccountsDrawerHeader(
-              accountName: const Text('Rajesh'),
-              accountEmail: const Text('rajesh120@gmail.com'),
-              currentAccountPicture: const CircleAvatar(
+            const UserAccountsDrawerHeader(
+              accountName: Text('Rajesh'),
+              accountEmail: Text('rajesh120@gmail.com'),
+              currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Icon(
                   Icons.person,
                   color: Colors.black,
                 ),
               ),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Color.fromARGB(255, 38, 83, 120),
               ),
               otherAccountsPictures: [
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: IconButton(
-                    icon: const Icon(Icons.add),
-                    color: Colors.black,
-                    onPressed: () {
-                      // Handle adding the user's image
-                    },
-                  ),
-                ),
+                // CircleAvatar(
+                //   backgroundColor: Colors.white,
+                //   // child: IconButton(
+                //   //   icon: const Icon(Icons.add),
+                //   //   color: Colors.black,
+                //   //   onPressed: () {
+                //   //     // Handle adding the user's image
+                //   //   },
+                //   // ),
+                // ),
               ],
             ),
             const SizedBox(height: 16.0),

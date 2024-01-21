@@ -31,7 +31,7 @@ class _IncomingPageDetailsState extends State<IncomingPageDetails> {
       appBar: AppBar(
         title: const Text('Income',
         style: TextStyle(color: Color.fromARGB(255, 246, 245, 245),
-        fontFamily: 'serif'),
+        fontFamily: 'sans'),
         ),
         backgroundColor: const Color.fromARGB(255, 54, 112, 159),
         toolbarHeight: 55,
