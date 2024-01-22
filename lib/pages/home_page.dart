@@ -26,27 +26,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  static const Color primaryColor = Color.fromARGB(255, 38, 83, 120);
+  static const Color accentColor = Colors.black38;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 38, 83, 120),
+        backgroundColor: primaryColor,
         actions: [
           Padding(
             padding: const EdgeInsets.only(top: 18.0, bottom: 14.0),
             child: ConstrainedBox(
               constraints: const BoxConstraints(
                 minWidth: 100.0,
-                maxWidth: 300.0, 
+                maxWidth: 300.0,
               ),
-              
               child: SearchAnchor(
                 builder: (BuildContext context, SearchController controller) {
                   return SearchBar(
                     controller: controller,
                     padding: const MaterialStatePropertyAll<EdgeInsets>(
                       EdgeInsets.symmetric(horizontal: 8.0),
-                
                     ),
                     onTap: () {
                       controller.openView();
@@ -54,12 +55,12 @@ class _HomePageState extends State<HomePage> {
                     onChanged: (_) {
                       controller.openView();
                     },
-                    
                     leading: const Icon(Icons.search),
                     hintText: 'Search',
                   );
                 },
-                suggestionsBuilder: (BuildContext context, SearchController controller) {
+                suggestionsBuilder:
+                    (BuildContext context, SearchController controller) {
                   return List.generate(5, (int index) {
                     final String item = 'Item $index';
                     return ListTile(
@@ -80,11 +81,11 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               // Implement notification functionality
             },
-            color: Colors.black38,
+            color: accentColor,
           ),
         ],
       ),
-       drawer: Drawer(
+      drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -99,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 38, 83, 120),
+                color: primaryColor,
               ),
               otherAccountsPictures: [
                 // CircleAvatar(
@@ -118,7 +119,7 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               title: const Text('Home'),
               leading: SvgPicture.asset(
-                'assets/home.svg', 
+                'assets/home.svg',
                 width: 24,
                 height: 24,
               ),
@@ -126,46 +127,46 @@ class _HomePageState extends State<HomePage> {
                 // Handle drawer item 1 click
               },
             ),
-             ListTile(
+            ListTile(
               title: const Text('Transaction'),
               leading: SvgPicture.asset(
-                'assets/transaction.svg', 
+                'assets/transaction.svg',
                 width: 24,
                 height: 24,
               ),
               onTap: () {
-                 Navigator.push(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const Transaction()),
                 );
               },
-              ),
+            ),
             ListTile(
               title: const Text('Task'),
               leading: SvgPicture.asset(
-                'assets/task.svg', 
+                'assets/task.svg',
                 width: 24,
                 height: 24,
               ),
               onTap: () {
                 // Handle drawer item 2 click
               },
-              ),
+            ),
             ListTile(
               title: const Text('Documents'),
               leading: SvgPicture.asset(
-                'assets/docs.svg', 
+                'assets/docs.svg',
                 width: 24,
                 height: 24,
               ),
               onTap: () {
                 // Handle drawer item 2 click
               },
-              ),
-             ListTile(
+            ),
+            ListTile(
               title: const Text('Store'),
               leading: SvgPicture.asset(
-                'assets/store.svg', 
+                'assets/store.svg',
                 width: 24,
                 height: 24,
               ),
@@ -176,25 +177,66 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               title: const Text('Settings'),
               leading: SvgPicture.asset(
-                'assets/settings.svg', 
+                'assets/settings.svg',
                 width: 24,
                 height: 24,
               ),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SettingsPageDetails()),
+                  MaterialPageRoute(
+                      builder: (context) => const SettingsPageDetails()),
                 );
               },
             ),
           ],
-        
         ),
       ),
-
-      body: const Center(
-        
-
+      body: Container(
+        padding: const EdgeInsets.all(16.0),
+        child: SizedBox(
+          height: 300.0,
+          width: 300.0, // Set the desired height for the card
+          child: Card(
+            elevation: 4.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Welcome to Finance App!',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 8.0),
+                  Text(
+                    'Start managing your finances today.',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                  SizedBox(height: 16.0),
+                  // Example ListView.builder
+                  // Expanded(
+                  //   child: ListView.builder(
+                  //     itemCount: 10,
+                  //     itemBuilder: (BuildContext context, int index) {
+                  //       return ListTile(
+                  //         title: Text('Item $index'),
+                  //         // Add more properties as needed
+                  //       );
+                  //     },
+                  //   ),
+                  // ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

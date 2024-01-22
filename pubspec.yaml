@@ -35,6 +35,8 @@ dependencies:
   image_picker: ^0.8.3
   animate_do: ^3.1.2
   settings_ui: ^2.0.2
+  
+
 
 
 dev_dependencies:
