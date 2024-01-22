@@ -30,6 +30,8 @@ class _SettingsPageDetailsState extends State<SettingsPageDetails> {
   bool isPrivateEnabled = false;
   bool isLiteTrackEnabled = false;
   bool isNotificationEnabled = false;
+  bool isCashExpensesEnabled = false;
+  bool isHandExpensesEnabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -59,14 +61,13 @@ class _SettingsPageDetailsState extends State<SettingsPageDetails> {
           ),
         ],
       ),
-
       body: SingleChildScrollView(
         child: Column(
           children: [
             buildSwitchListTile(
               'Monthly Budgets',
               isBudgetEnabled,
-                  (value) {
+              (value) {
                 setState(() {
                   isBudgetEnabled = value;
                 });
@@ -78,7 +79,7 @@ class _SettingsPageDetailsState extends State<SettingsPageDetails> {
             buildSwitchListTile(
               'Private Mode',
               isPrivateEnabled,
-                  (value) {
+              (value) {
                 setState(() {
                   isPrivateEnabled = value;
                 });
@@ -89,7 +90,7 @@ class _SettingsPageDetailsState extends State<SettingsPageDetails> {
             buildSwitchListTile(
               'Dark Mode',
               isDarkMode,
-                  (value) {
+              (value) {
                 setState(() {
                   isDarkMode = value;
                 });
@@ -100,7 +101,7 @@ class _SettingsPageDetailsState extends State<SettingsPageDetails> {
             buildSwitchListTile(
               'App Lock',
               isFingerprintEnabled,
-                  (value) {
+              (value) {
                 setState(() {
                   isFingerprintEnabled = value;
                 });
@@ -109,6 +110,7 @@ class _SettingsPageDetailsState extends State<SettingsPageDetails> {
             ),
 
             const ListTile(
+              leading: Icon(Icons.widgets),
               title: Text(
                 'Widgets',
                 style: TextStyle(
@@ -122,8 +124,93 @@ class _SettingsPageDetailsState extends State<SettingsPageDetails> {
                   "Stay up-to-date on expenses and due bills from your phone home screen"),
             ),
             const ListTile(
+              leading: Icon(Icons.link),
               title: Text(
-                'Widgets',
+                'Sync with Family',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'sans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+              subtitle: Text("Share your data with favourite one"),
+            ),
+
+            buildSwitchListTile(
+              'Instant Notifications',
+              isNotificationEnabled,
+              (value) {
+                setState(() {
+                  isNotificationEnabled = value;
+                  ;
+                });
+              },
+              icon: Icons.notification_important_rounded,
+            ),
+
+            const ListTile(
+              leading: Icon(Icons.mark_email_read),
+              title: Text(
+                'Notifications Access',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'sans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+              subtitle: Text(
+                  "Allow to fetch the notifications across to the Multiple apps "),
+            ),
+
+            const ListTile(
+              leading: Icon(Icons.currency_exchange),
+              title: Text(
+                'Your Currency',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'sans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+              subtitle: Text("India(INR)"),
+            ),
+
+            const ListTile(
+              leading: Icon(Icons.restore),
+              title: Text(
+                'Restore',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'sans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+              subtitle: Text("Restore dat from the backup file"),
+            ),
+
+            const ListTile(
+              leading: Icon(Icons.backup),
+              title: Text(
+                'Backup',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'sans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+              subtitle: Text(
+                  "Backup your data to recover history in case of phone change/loss"),
+            ),
+
+            const ListTile(
+              leading: Icon(Icons.import_contacts),
+              title: Text(
+                'Custom Import',
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'sans',
@@ -136,20 +223,31 @@ class _SettingsPageDetailsState extends State<SettingsPageDetails> {
             ),
 
             buildSwitchListTile(
-              'Instant Notifications',
-              isNotificationEnabled,
-                  (value) {
+              'Cash Expenses Reminder',
+              isCashExpensesEnabled,
+              (value) {
                 setState(() {
-                  isNotificationEnabled= value;
-                  ;
+                  isCashExpensesEnabled = value;
                 });
               },
-              icon: Icons.notification_important_rounded,
+              icon: Icons.add_home_sharp,
+            ),
+
+            buildSwitchListTile(
+              'Treat cash expenses',
+              isHandExpensesEnabled,
+              (value) {
+                setState(() {
+                  isHandExpensesEnabled = value;
+                });
+              },
+              icon: Icons.markunread_mailbox,
             ),
 
             const ListTile(
+              leading: Icon(Icons.delete_outline),
               title: Text(
-                'Widgets',
+                'Factory/Reset app data',
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'sans',
@@ -158,12 +256,13 @@ class _SettingsPageDetailsState extends State<SettingsPageDetails> {
                 ),
               ),
               subtitle: Text(
-                  "Stay up-to-date on expenses and due bills from your phone home screen"),
+                  "Backup your data to recover history in case of phone change/loss"),
             ),
 
             const ListTile(
+              leading: Icon(Icons.delete),
               title: Text(
-                'Widgets',
+                'Delete Account',
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'sans',
@@ -172,52 +271,8 @@ class _SettingsPageDetailsState extends State<SettingsPageDetails> {
                 ),
               ),
               subtitle: Text(
-                  "Stay up-to-date on expenses and due bills from your phone home screen"),
+                  "Backup your data to recover history in case of phone change/loss"),
             ),
-
-            const ListTile(
-              title: Text(
-                'Widgets',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'sans',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18.0,
-                ),
-              ),
-              subtitle: Text(
-                  "Stay up-to-date on expenses and due bills from your phone home screen"),
-            ),
-
-            const ListTile(
-              title: Text(
-                'Widgets',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'sans',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18.0,
-                ),
-              ),
-              subtitle: Text(
-                  "Stay up-to-date on expenses and due bills from your phone home screen"),
-            ),
-
-            const ListTile(
-              title: Text(
-                'Widgets',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'sans',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18.0,
-                ),
-              ),
-              subtitle: Text(
-                  "Stay up-to-date on expenses and due bills from your phone home screen"),
-            ),
-
-
           ],
         ),
       ),
@@ -225,11 +280,11 @@ class _SettingsPageDetailsState extends State<SettingsPageDetails> {
   }
 
   SwitchListTile buildSwitchListTile(
-      String title,
-      bool value,
-      ValueChanged<bool> onChanged, {
-        IconData? icon,
-      }) {
+    String title,
+    bool value,
+    ValueChanged<bool> onChanged, {
+    IconData? icon,
+  }) {
     return SwitchListTile(
       title: Row(
         children: [
